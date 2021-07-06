@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbperpuswebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="kategori">
+    <Key>
+      <PropertyRef Name="id_kategori" />
+    </Key>
+    <Property Name="id_kategori" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama_kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status_kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bukus" Relationship="dbperpuswebModel.FK_buku_kategori" FromRole="kategori" ToRole="buku" />
+  </EntityType>
+  <EntityContainer Name="dbperpuswebEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="kategoris" EntityType="Self.kategori" />
+    <EntitySet Name="penerbits" EntityType="dbperpuswebModel.penerbit" />
+    <EntitySet Name="penulis1" EntityType="dbperpuswebModel.penulis" />
+    <EntitySet Name="members" EntityType="dbperpuswebModel.member" />
+    <EntitySet Name="bukus" EntityType="dbperpuswebModel.buku" />
+    <AssociationSet Name="FK_buku_kategori" Association="dbperpuswebModel.FK_buku_kategori">
+      <End Role="kategori" EntitySet="kategoris" />
+      <End Role="buku" EntitySet="bukus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_buku_penerbit" Association="dbperpuswebModel.FK_buku_penerbit">
+      <End Role="penerbit" EntitySet="penerbits" />
+      <End Role="buku" EntitySet="bukus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_buku_penulis" Association="dbperpuswebModel.FK_buku_penulis">
+      <End Role="penulis" EntitySet="penulis1" />
+      <End Role="buku" EntitySet="bukus" />
+    </AssociationSet>
+    <EntitySet Name="pinjambukus" EntityType="dbperpuswebModel.pinjambuku" />
+    <EntitySet Name="kembalikanbukus" EntityType="dbperpuswebModel.kembalikanbuku" />
+  </EntityContainer>
+  <EntityType Name="penerbit">
+    <Key>
+      <PropertyRef Name="id_penerbit" />
+    </Key>
+    <Property Name="id_penerbit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama_penerbit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="alamat_penerbit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hp_penerbit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bukus" Relationship="dbperpuswebModel.FK_buku_penerbit" FromRole="penerbit" ToRole="buku" />
+  </EntityType>
+  <EntityType Name="penulis">
+    <Key>
+      <PropertyRef Name="id_penulis" />
+    </Key>
+    <Property Name="id_penulis" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama_penulis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="alamat_penulis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hp_penulis" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bukus" Relationship="dbperpuswebModel.FK_buku_penulis" FromRole="penulis" ToRole="buku" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="id_member" />
+    </Key>
+    <Property Name="id_member" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama_member" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="alamat_member" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hp_member" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="buku">
+    <Key>
+      <PropertyRef Name="id_buku" />
+    </Key>
+    <Property Name="id_buku" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama_buku" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_kategori" Type="Int32" />
+    <Property Name="id_penulis" Type="Int32" />
+    <Property Name="id_penerbit" Type="Int32" />
+    <Property Name="halaman" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="kategori" Relationship="dbperpuswebModel.FK_buku_kategori" FromRole="buku" ToRole="kategori" />
+    <NavigationProperty Name="penerbit" Relationship="dbperpuswebModel.FK_buku_penerbit" FromRole="buku" ToRole="penerbit" />
+    <NavigationProperty Name="penuli" Relationship="dbperpuswebModel.FK_buku_penulis" FromRole="buku" ToRole="penulis" />
+  </EntityType>
+  <Association Name="FK_buku_kategori">
+    <End Type="dbperpuswebModel.kategori" Role="kategori" Multiplicity="0..1" />
+    <End Type="dbperpuswebModel.buku" Role="buku" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="id_kategori" />
+      </Principal>
+      <Dependent Role="buku">
+        <PropertyRef Name="id_kategori" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_buku_penerbit">
+    <End Type="dbperpuswebModel.penerbit" Role="penerbit" Multiplicity="0..1" />
+    <End Type="dbperpuswebModel.buku" Role="buku" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="penerbit">
+        <PropertyRef Name="id_penerbit" />
+      </Principal>
+      <Dependent Role="buku">
+        <PropertyRef Name="id_penerbit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_buku_penulis">
+    <End Type="dbperpuswebModel.penulis" Role="penulis" Multiplicity="0..1" />
+    <End Type="dbperpuswebModel.buku" Role="buku" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="penulis">
+        <PropertyRef Name="id_penulis" />
+      </Principal>
+      <Dependent Role="buku">
+        <PropertyRef Name="id_penulis" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="pinjambuku">
+    <Key>
+      <PropertyRef Name="id_pinjam" />
+    </Key>
+    <Property Name="id_pinjam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_member" Type="Int32" />
+    <Property Name="id_buku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tgl_pinjam" Type="DateTime" Precision="0" />
+    <Property Name="tgl_kembali" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="kembalikanbuku">
+    <Key>
+      <PropertyRef Name="id_kembalikanbuku" />
+    </Key>
+    <Property Name="id_kembalikanbuku" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_member" Type="Int32" />
+    <Property Name="buku" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tgl_kembali" Type="DateTime" Precision="0" />
+    <Property Name="lamapinjam" Type="Int32" />
+    <Property Name="denda" Type="Int32" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbperpuswebModelStoreContainer" CdmEntityContainer="dbperpuswebEntities">
+    <EntitySetMapping Name="kategoris">
+      <EntityTypeMapping TypeName="dbperpuswebModel.kategori">
+        <MappingFragment StoreEntitySet="kategori">
+          <ScalarProperty Name="id_kategori" ColumnName="id_kategori" />
+          <ScalarProperty Name="nama_kategori" ColumnName="nama_kategori" />
+          <ScalarProperty Name="status_kategori" ColumnName="status_kategori" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="penerbits">
+      <EntityTypeMapping TypeName="dbperpuswebModel.penerbit">
+        <MappingFragment StoreEntitySet="penerbit">
+          <ScalarProperty Name="hp_penerbit" ColumnName="hp_penerbit" />
+          <ScalarProperty Name="alamat_penerbit" ColumnName="alamat_penerbit" />
+          <ScalarProperty Name="nama_penerbit" ColumnName="nama_penerbit" />
+          <ScalarProperty Name="id_penerbit" ColumnName="id_penerbit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="penulis1">
+      <EntityTypeMapping TypeName="dbperpuswebModel.penulis">
+        <MappingFragment StoreEntitySet="penulis">
+          <ScalarProperty Name="hp_penulis" ColumnName="hp_penulis" />
+          <ScalarProperty Name="alamat_penulis" ColumnName="alamat_penulis" />
+          <ScalarProperty Name="nama_penulis" ColumnName="nama_penulis" />
+          <ScalarProperty Name="id_penulis" ColumnName="id_penulis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="members">
+      <EntityTypeMapping TypeName="dbperpuswebModel.member">
+        <MappingFragment StoreEntitySet="member">
+          <ScalarProperty Name="hp_member" ColumnName="hp_member" />
+          <ScalarProperty Name="alamat_member" ColumnName="alamat_member" />
+          <ScalarProperty Name="nama_member" ColumnName="nama_member" />
+          <ScalarProperty Name="id_member" ColumnName="id_member" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bukus">
+      <EntityTypeMapping TypeName="dbperpuswebModel.buku">
+        <MappingFragment StoreEntitySet="buku">
+          <ScalarProperty Name="halaman" ColumnName="halaman" />
+          <ScalarProperty Name="id_penerbit" ColumnName="id_penerbit" />
+          <ScalarProperty Name="id_penulis" ColumnName="id_penulis" />
+          <ScalarProperty Name="id_kategori" ColumnName="id_kategori" />
+          <ScalarProperty Name="nama_buku" ColumnName="nama_buku" />
+          <ScalarProperty Name="id_buku" ColumnName="id_buku" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pinjambukus">
+      <EntityTypeMapping TypeName="dbperpuswebModel.pinjambuku">
+        <MappingFragment StoreEntitySet="pinjambuku">
+          <ScalarProperty Name="tgl_kembali" ColumnName="tgl_kembali" />
+          <ScalarProperty Name="tgl_pinjam" ColumnName="tgl_pinjam" />
+          <ScalarProperty Name="id_buku" ColumnName="id_buku" />
+          <ScalarProperty Name="id_member" ColumnName="id_member" />
+          <ScalarProperty Name="id_pinjam" ColumnName="id_pinjam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kembalikanbukus">
+      <EntityTypeMapping TypeName="dbperpuswebModel.kembalikanbuku">
+        <MappingFragment StoreEntitySet="kembalikanbuku">
+          <ScalarProperty Name="denda" ColumnName="denda" />
+          <ScalarProperty Name="lamapinjam" ColumnName="lamapinjam" />
+          <ScalarProperty Name="tgl_kembali" ColumnName="tgl_kembali" />
+          <ScalarProperty Name="buku" ColumnName="buku" />
+          <ScalarProperty Name="id_member" ColumnName="id_member" />
+          <ScalarProperty Name="id_kembalikanbuku" ColumnName="id_kembalikanbuku" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

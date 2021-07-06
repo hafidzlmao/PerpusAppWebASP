@@ -1,0 +1,42 @@
+﻿@model PerpusAppWeb.Models.penerbit
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>penerbit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nama_penerbit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nama_penerbit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alamat_penerbit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alamat_penerbit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hp_penerbit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hp_penerbit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_penerbit }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

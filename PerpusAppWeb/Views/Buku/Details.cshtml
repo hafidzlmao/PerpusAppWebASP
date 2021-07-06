@@ -1,0 +1,58 @@
+﻿@model PerpusAppWeb.Models.buku
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>buku</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nama_buku)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nama_buku)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.halaman)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.halaman)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kategori.nama_kategori)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kategori.nama_kategori)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.penerbit.nama_penerbit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.penerbit.nama_penerbit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.penuli.nama_penulis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.penuli.nama_penulis)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_buku }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

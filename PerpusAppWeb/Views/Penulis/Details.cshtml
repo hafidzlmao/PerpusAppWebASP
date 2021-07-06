@@ -1,0 +1,42 @@
+﻿@model PerpusAppWeb.Models.penulis
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>penulis</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nama_penulis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nama_penulis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alamat_penulis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alamat_penulis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hp_penulis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hp_penulis)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_penulis }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

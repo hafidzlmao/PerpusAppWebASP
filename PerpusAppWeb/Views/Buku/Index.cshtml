@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PerpusAppWeb.Models.buku>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nama_buku)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.halaman)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kategori.nama_kategori)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.penerbit.nama_penerbit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.penuli.nama_penulis)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nama_buku)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.halaman)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kategori.nama_kategori)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.penerbit.nama_penerbit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.penuli.nama_penulis)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_buku }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_buku }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_buku })
+        </td>
+    </tr>
+}
+
+</table>

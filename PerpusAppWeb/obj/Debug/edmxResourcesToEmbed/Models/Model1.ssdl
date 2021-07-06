@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbperpuswebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="buku">
+    <Key>
+      <PropertyRef Name="id_buku" />
+    </Key>
+    <Property Name="id_buku" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama_buku" Type="varchar" MaxLength="50" />
+    <Property Name="id_kategori" Type="int" />
+    <Property Name="id_penulis" Type="int" />
+    <Property Name="id_penerbit" Type="int" />
+    <Property Name="halaman" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="kategori">
+    <Key>
+      <PropertyRef Name="id_kategori" />
+    </Key>
+    <Property Name="id_kategori" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama_kategori" Type="varchar" MaxLength="50" />
+    <Property Name="status_kategori" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="kembalikanbuku">
+    <Key>
+      <PropertyRef Name="id_kembalikanbuku" />
+    </Key>
+    <Property Name="id_kembalikanbuku" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_member" Type="int" />
+    <Property Name="buku" Type="varchar" MaxLength="50" />
+    <Property Name="tgl_kembali" Type="date" />
+    <Property Name="lamapinjam" Type="int" />
+    <Property Name="denda" Type="int" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="id_member" />
+    </Key>
+    <Property Name="id_member" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama_member" Type="varchar" MaxLength="50" />
+    <Property Name="alamat_member" Type="varchar" MaxLength="50" />
+    <Property Name="hp_member" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="penerbit">
+    <Key>
+      <PropertyRef Name="id_penerbit" />
+    </Key>
+    <Property Name="id_penerbit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama_penerbit" Type="varchar" MaxLength="50" />
+    <Property Name="alamat_penerbit" Type="varchar" MaxLength="50" />
+    <Property Name="hp_penerbit" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="penulis">
+    <Key>
+      <PropertyRef Name="id_penulis" />
+    </Key>
+    <Property Name="id_penulis" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama_penulis" Type="varchar" MaxLength="50" />
+    <Property Name="alamat_penulis" Type="varchar" MaxLength="50" />
+    <Property Name="hp_penulis" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pinjambuku">
+    <Key>
+      <PropertyRef Name="id_pinjam" />
+    </Key>
+    <Property Name="id_pinjam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_member" Type="int" />
+    <Property Name="id_buku" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tgl_pinjam" Type="date" />
+    <Property Name="tgl_kembali" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_buku_kategori">
+    <End Role="kategori" Type="Self.kategori" Multiplicity="0..1" />
+    <End Role="buku" Type="Self.buku" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="id_kategori" />
+      </Principal>
+      <Dependent Role="buku">
+        <PropertyRef Name="id_kategori" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_buku_penerbit">
+    <End Role="penerbit" Type="Self.penerbit" Multiplicity="0..1" />
+    <End Role="buku" Type="Self.buku" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="penerbit">
+        <PropertyRef Name="id_penerbit" />
+      </Principal>
+      <Dependent Role="buku">
+        <PropertyRef Name="id_penerbit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_buku_penulis">
+    <End Role="penulis" Type="Self.penulis" Multiplicity="0..1" />
+    <End Role="buku" Type="Self.buku" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="penulis">
+        <PropertyRef Name="id_penulis" />
+      </Principal>
+      <Dependent Role="buku">
+        <PropertyRef Name="id_penulis" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbperpuswebModelStoreContainer">
+    <EntitySet Name="buku" EntityType="Self.buku" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kategori" EntityType="Self.kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kembalikanbuku" EntityType="Self.kembalikanbuku" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="penerbit" EntityType="Self.penerbit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="penulis" EntityType="Self.penulis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pinjambuku" EntityType="Self.pinjambuku" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_buku_kategori" Association="Self.FK_buku_kategori">
+      <End Role="kategori" EntitySet="kategori" />
+      <End Role="buku" EntitySet="buku" />
+    </AssociationSet>
+    <AssociationSet Name="FK_buku_penerbit" Association="Self.FK_buku_penerbit">
+      <End Role="penerbit" EntitySet="penerbit" />
+      <End Role="buku" EntitySet="buku" />
+    </AssociationSet>
+    <AssociationSet Name="FK_buku_penulis" Association="Self.FK_buku_penulis">
+      <End Role="penulis" EntitySet="penulis" />
+      <End Role="buku" EntitySet="buku" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

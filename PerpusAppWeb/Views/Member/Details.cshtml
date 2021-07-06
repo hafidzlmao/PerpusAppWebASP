@@ -1,0 +1,42 @@
+﻿@model PerpusAppWeb.Models.member
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>member</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nama_member)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nama_member)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alamat_member)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alamat_member)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hp_member)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hp_member)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_member }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
